@@ -1,0 +1,49 @@
+<!-- template.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pedidos</title>
+  <style>
+    .order-item {
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .order-ready {
+      background-color: #A0FFA0;
+    }
+
+    .order-not-ready {
+      background-color: #FFA0A0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pedidos</h1>
+
+  {% if alert %}
+    <div class="alert">
+      {{ alert }}
+    </div>
+  {% endif %}
+
+  <form method="POST">
+    {% csrf_token %}
+    <label for="order_id">ID do Pedido:</label>
+    <input type="text" id="order_id" name="order_id" required>
+    <label for="client_name">Nome do Cliente:</label>
+    <input type="text" id="client_name" name="client_name">
+    <button type="submit">Registrar Pedido</button>
+  </form>
+
+  <h2>Todos os Pedidos:</h2>
+  {% for order in orders %}
+    <div class="order-item {% if order.is_ready %}order-ready{% else %}order-not-ready{% endif %}">
+      <p>ID: {{ order.id }}</p>
+      <p>Cliente: {{ order.client }}</p>
+      <p>Status: {% if order.is_ready %}Pronto{% else %}Não Pronto{% endif %}</p>
+    </div>
+  {% endfor %}
+</body>
+</html>
