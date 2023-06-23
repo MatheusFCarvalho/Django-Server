@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #         'HOST': 'containers-us-west-174.railway.app',
 #         'PORT': 7798,
 #     }
-
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',

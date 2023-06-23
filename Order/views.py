@@ -22,7 +22,7 @@ def SellersPage(request):
         if order:
             alert = f"Pedido {order.id} já existe. Cliente: {order.client}. Status: {'Pronto' if order.is_ready else 'Não Pronto'}"
         else:
-            order = Order.objects.create(id=order_id, client=client_name, is_ready=True)
+            order = Order.objects.create(id=order_id, client=client_name, is_ready=False)
             order.save()
             alert = None
 
