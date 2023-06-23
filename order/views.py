@@ -1,6 +1,8 @@
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.shortcuts import render
 from .models import Order
 
+@ensure_csrf_cookie
 def ConfirmOrder(request):
     if request.method == 'POST':
         order_id = request.POST.get('order_id')
@@ -12,6 +14,7 @@ def ConfirmOrder(request):
     orders = Order.objects.all()
     return render(request, 'confirmOrder.html', {'orders': orders})
 
+@ensure_csrf_cookie
 def SellersPage(request):
     if request.method == 'POST':
         order_id = request.POST.get('order_id')
