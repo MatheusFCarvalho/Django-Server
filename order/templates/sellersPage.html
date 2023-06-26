@@ -34,11 +34,17 @@
         }
       }
     }
+    function toggleView() {
+      const ordersContainer = document.querySelector('.orders-container');
+      ordersContainer.classList.toggle('list-view');
+    }
+    
   </script>
 </head>
 <body>
   <div class="container">
     <h1>Pedidos</h1>
+    <button id="toggle-view-btn" onclick="toggleView()">Alternar Visualização</button>
     {% comment %} <button onClick="newForm()">Registrar novo pedido</button> {% endcomment %}
     <form class="create-order-form" method="POST">
       {% csrf_token %}
@@ -60,6 +66,7 @@
     <label for="search_input">Buscar:</label>
     <input type="text" id="search_input" onkeyup="searchOrders()" placeholder="Digite o nome do cliente ou ID do pedido">
 
+    <p>Boooom dia vendedores do meu coração sz o site ainda tá destualizado :/ mas estou aceitando novas ideias! aliás sua roupa ta linda hj, venda tudo e conquiste o mundo! <(o_o<)</p>
     <h2>Pedidos:</h2>
     <ul class="orders-container">
       {% for order in orders %}

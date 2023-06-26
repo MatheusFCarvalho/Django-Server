@@ -90,3 +90,57 @@ body {
   .red {
     background: red;
   }
+
+  /* UPDATE LISTVIEW SHITS */
+  /* Restante do código omitido para maior clareza */
+
+.list-view .order-item {
+  flex-direction: column;
+  width: 200px;
+  align-items: flex-start;
+}
+
+.list-view .order-info {
+  margin-right: 0;
+}
+
+.list-view .order-status {
+  margin-top: 10px;
+}
+
+.list-view .order-not-ready,
+.list-view .order-ready {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.list-view .order-ready,
+.list-view .order-not-ready {
+  display: block;
+}
+
+.list-view .order-ready {
+  background-color: #A0FFA0;
+}
+
+.list-view .order-not-ready {
+  background-color: #FFA0A0;
+}
+
+.list-view .order-info {
+  display:flex ;
+  justify-content: space-between;
+}
+
+/* Restante do código omitido para maior clareza */
+
+.orders-container {
+  transition: all 0.3s ease;
+}
+
+.list-view .order-item {
+  /* Restante do código omitido para maior clareza */
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
