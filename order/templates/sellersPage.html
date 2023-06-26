@@ -1,92 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Confirmar Pedido</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
+  <title>vendedor</title>
+  {% load static %}
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+  <link rel="stylesheet" type="text/css" href="{% static 'css/basic.css' %}">
 
-    h1 {
-      text-align: center;
-    }
-
-    form {
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    button {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    h2 {
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
-
-    .order-item {
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .order-ready {
-      background-color: #A0FFA0;
-    }
-
-    .order-not-ready {
-      background-color: #FFA0A0;
-    }
-
-    .order-info {
-      flex: 1;
-      margin-right: 10px;
-    }
-
-    .order-status {
-      font-weight: bold;
-    }
-
-    .create-order-form {
-      display: none;
-    }
-
-    .flexin {
-      display: flex;
-      gap: 50px
-    }
-
-    .red {
-      background: red;
-    }
-  </style>
   <script>
 
     function newForm() {
@@ -120,7 +39,7 @@
 <body>
   <div class="container">
     <h1>Pedidos</h1>
-    <button onClick="newForm()">Registrar novo pedido</button>
+    {% comment %} <button onClick="newForm()">Registrar novo pedido</button> {% endcomment %}
     <form class="create-order-form" method="POST">
       {% csrf_token %}
       <div class="flexin">
@@ -146,11 +65,9 @@
       {% for order in orders %}
       <li class="order-item {% if order.is_ready %}order-ready{% else %}order-not-ready{% endif %}">
         <div class="order-info">
-          <p class="order-id">ID: {{ order.id }}</p>
+          <p class="order-id">ID: <strong> {{ order.id }}</strong> | <strong>{% if order.is_ready %}Pronto{% else %}Não Pronto{% endif %}</strong></p>
           <p class="order-client">Cliente: {{ order.client }}</p>
-        </div>
-        <div class="order-status">
-          <p>Status: {% if order.is_ready %}Pronto{% else %}Não Pronto{% endif %}</p>
+          <p>Destino: {{ order.destiny }}</p>
         </div>
       </li>
       {% endfor %}
