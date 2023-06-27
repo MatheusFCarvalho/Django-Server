@@ -88,9 +88,14 @@ body {
   }
 
   .red {
-    background: red;
+    background: blue;
   }
-
+  .soft-red {
+    background: #FFA0A0;
+  }
+  .soft-blue {
+    background: #2900ff70;
+  }
   /* UPDATE LISTVIEW SHITS */
   /* Restante do código omitido para maior clareza */
 

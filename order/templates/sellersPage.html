@@ -29,6 +29,7 @@
         
         if (id.includes(input) || client.includes(input)) {
           order.style.display = "flex";
+          order.style.marginRight = "30px";
         } else {
           order.style.display = "none";
         }
@@ -43,31 +44,16 @@
 </head>
 <body>
   <div class="container">
-    <h1>Pedidos</h1>
+    {% comment %} <h1>page.title</h1>
+    <h2>page.subtitle</h2>
+    <p>page.message page.masChar</p> {% endcomment %}
+    <h1>BOOOOOM DIAAAAAA (*_*)</h1>
     <button id="toggle-view-btn" onclick="toggleView()">Alternar Visualização</button>
     {% comment %} <button onClick="newForm()">Registrar novo pedido</button> {% endcomment %}
-    <form class="create-order-form" method="POST">
-      {% csrf_token %}
-      <div class="flexin">
-        <div>
-          <label for="order_id">*ID do Pedido:</label>
-          <input type="text" id="order_id" name="order_id" required>
-        </div>
-        
-        <div>
-          <label for="order_id">Nome do cliente:</label>
-          <input type="text" id="client_name" name="client_name">
-        </div>
-      </div>
-      <button type="submit">Confirmar</button>
-      <button class="red" onClick="closeForm()">Cancelar</button>
-    </form>
-
+    
     <label for="search_input">Buscar:</label>
     <input type="text" id="search_input" onkeyup="searchOrders()" placeholder="Digite o nome do cliente ou ID do pedido">
 
-    <p>Boooom dia vendedores do meu coração sz o site ainda tá destualizado :/ mas estou aceitando novas ideias! aliás sua roupa ta linda hj, venda tudo e conquiste o mundo! <(o_o<)</p>
-    <h2>Pedidos:</h2>
     <ul class="orders-container">
       {% for order in orders %}
       <li class="order-item {% if order.is_ready %}order-ready{% else %}order-not-ready{% endif %}">
