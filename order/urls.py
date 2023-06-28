@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import SellersPage, ConfirmOrder, MasterPage, CreateOrder
+from .views import SellersPage, MasterPage, ConfirmOrder
 
 app_name = 'order'
 
 urlpatterns = [
-    path('', SellersPage, name='create'),
+    path('orders/', SellersPage, name='create'),
+    path('orders/master/', MasterPage, name='create'),
     # path('master/', MasterPage, name='confirm'),
     path('confirm/', ConfirmOrder, name='confirm'),
     # path('create/', CreateOrder, name='confirm'),

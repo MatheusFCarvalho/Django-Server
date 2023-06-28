@@ -1,7 +1,31 @@
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from .models import Order
 from .forms import OrderForm
+from django.http import HttpResponse
+
+@login_required
+def SellersPage(request):
+    user = request.user
+    print(request.user)
+    print(request.user.id)
+    print(request.user.trustly)
+    orders = Order.objects.filter(seller_id=user.id)
+    return render(request, 'sellersPage.html', {'orders': orders, 'user':user})
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def MasterPage(request):
+    user = request.user
+
+    if user.trustly:
+        orders = Order.objects.all()
+        return render(request, 'masterPage.html', {'orders': orders, 'user': user})
+    else:
+        return HttpResponse("Acesso não autorizado.")  # Ou redirecionar para uma página de erro, por exemplo.
+
+
 
 def ConfirmOrder(request):
     if request.method == 'POST':
@@ -13,41 +37,4 @@ def ConfirmOrder(request):
 
     orders = Order.objects.all()
     return render(request, 'confirmOrder.html', {'orders': orders})
-
-def SellersPage(request):
-    if request.method == 'POST':
-        order_id = request.POST.get('order_id')
-        client_name = request.POST.get('client_name', None)
-
-        order = Order.objects.filter(id=order_id).first()
-
-        if order:
-            alert = f"Pedido {order.id} já existe. Cliente: {order.client}. Status: {'Pronto' if order.is_ready else 'Não Pronto'}"
-        else:
-            order = Order.objects.create(id=order_id, client=client_name, is_ready=False)
-            order.save()
-            alert = None
-
-    else:
-        alert = None
-
-    orders = Order.objects.all()
-    return render(request, 'sellersPage.html', {'orders': orders, 'alert': alert})
-
-
-
-def CreateOrder(request):
-    if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            form.save()
-            # Redirecionar para uma página de sucesso ou fazer outra ação desejada
-    else:
-        form = OrderForm()
-
-    return render(request, 'createOrder.html', {'form': form})
-
-
-def MasterPage(request):
-    orders = Order.objects.all()
     return render(request, 'masterPage.html', {'orders': orders})
