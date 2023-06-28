@@ -1,0 +1,12 @@
+{% load static %}
+
+{% comment %} <li class="order-item {% if order.is_ready %}order-ready{% else %}order-not-ready{% endif %}"> {% endcomment %}
+<li class="order-item {{order.calculate_color}}">
+    <div class="order-info" >
+      <p class="order-id">ID: <strong>{{ order.id }}</strong> | <strong>{% if order.is_ready %}Pronto{% else %}Não Pronto{% endif %}</strong></p>
+      <p class="order-client">Cliente: {{ order.client }}</p>
+      <p>Estágio prod.: {{ order.estage }}</p>
+      <p>Data fat.: {{ order.date_billing }}</p>
+    </div>
+  </li>
+  

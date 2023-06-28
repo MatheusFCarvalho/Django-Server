@@ -33,3 +33,11 @@ class Order(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+    def calculate_color(self):
+        if not self.is_ready:
+            return 'light-yellow'
+        elif self.estage in ['RETIRADO', 'ENTREGUE']:
+            return 'light-purple'
+        else:
+            return 'light-green'

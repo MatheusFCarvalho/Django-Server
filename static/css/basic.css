@@ -68,7 +68,14 @@ body {
   .order-not-ready {
     background-color: #FFA0A0;
   }
-  .RETIRADO {
+  .light-green {
+    background-color: #A0FFA0;
+  }
+
+  .light-yellow {
+    background-color: #f5ffa0;
+  }
+  .light-purple {
     background-color: rgb(165, 98, 233);
   }
 

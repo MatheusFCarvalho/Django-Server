@@ -2,9 +2,10 @@
 <html>
 <head>
   <title>vendedor</title>
-  {% load static %}
 
-  <link rel="stylesheet" type="text/css" href="{% static 'css/basic.css' %}">
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/basic.css' %}">
 
   <script>
 
@@ -29,7 +30,7 @@
         
         if (id.includes(input) || client.includes(input)) {
           order.style.display = "flex";
-          order.style.marginRight = "30px";
+          order.style.justifyContent = "space-between";
         } else {
           order.style.display = "none";
         }
@@ -40,6 +41,8 @@
       ordersContainer.classList.toggle('list-view');
     }
     
+    currentOrders = orders
+
   </script>
 </head>
 <body>
@@ -56,16 +59,10 @@
 
     <ul class="orders-container">
       {% for order in orders %}
-      <li class="order-item {% if order.is_ready %}order-ready{% else %}order-not-ready{% endif %}">
-        <div class="order-info {{order.estage}}">
-          <p class="order-id">ID: <strong> {{ order.id }}</strong> | <strong>{% if order.is_ready %}Pronto{% else %}Não Pronto{% endif %}</strong></p>
-          <p class="order-client">Cliente: {{ order.client }}</p>
-          <p>Estágio prod.: {{ order.estage }}</p>
-          <p>Data fat.: {{order.date_billing}}</p>
-        </div>
-      </li>
+        {% include 'orderItem.html' %}
       {% endfor %}
     </ul>
+    
   </div>
 </body>
 </html>
