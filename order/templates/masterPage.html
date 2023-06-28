@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>vendedor</title>
+  <title>master</title>
   {% load static %}
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/basic.css' %}">
@@ -29,7 +29,8 @@
         
         if (id.includes(input) || client.includes(input)) {
           order.style.display = "flex";
-          order.style.marginRight = "30px";
+          info = order.querySelector(".order-info")
+          info.style.width = "100%"
         } else {
           order.style.display = "none";
         }
@@ -47,7 +48,7 @@
     {% comment %} <h1>page.title</h1>
     <h2>page.subtitle</h2>
     <p>page.message page.masChar</p> {% endcomment %}
-    <h1>Bem vindo {{user.username}}! (*_*) | setor: {{user.sector}}</h1>
+    <h1>Bem vindo cacique {{user.username}}! (*_*) | setor: {{user.sector}}</h1>
     {% comment %} <button onClick="newForm()">Registrar novo pedido</button> {% endcomment %}
     
     <button id="toggle-view-btn" onclick="toggleView()">Alternar Visualização</button>
@@ -61,6 +62,7 @@
           <p class="order-id">ID: <strong> {{ order.id }}</strong> | <strong>{% if order.is_ready %}Pronto{% else %}Não Pronto{% endif %}</strong></p>
           <p class="order-client">Cliente: {{ order.client }}</p>
           <p>Destino: {{ order.destiny }}</p>
+          <p>Vendedor: {{order.seller.username}}</p>
         </div>
       </li>
       {% endfor %}

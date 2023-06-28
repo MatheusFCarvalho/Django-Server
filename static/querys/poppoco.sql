@@ -1,0 +1,1 @@
+INSERT INTO order_order (id, client, seller_id, is_ready, destiny) VALUES ('20197', ' VEZZANO MOVEIS E DESIGN', '4', 'False', 'Nao informado'), ('20194', 'AUTENTIC MOVELARIA', '2', 'False', 'Nao informado'), ('20193', 'FAGUNDES AMBIENTES PLANEJADOS', '5', 'False', 'Nao informado');
