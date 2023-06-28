@@ -57,10 +57,11 @@
     <ul class="orders-container">
       {% for order in orders %}
       <li class="order-item {% if order.is_ready %}order-ready{% else %}order-not-ready{% endif %}">
-        <div class="order-info">
+        <div class="order-info {{order.estage}}">
           <p class="order-id">ID: <strong> {{ order.id }}</strong> | <strong>{% if order.is_ready %}Pronto{% else %}Não Pronto{% endif %}</strong></p>
           <p class="order-client">Cliente: {{ order.client }}</p>
-          <p>Destino: {{ order.destiny }}</p>
+          <p>Estágio prod.: {{ order.estage }}</p>
+          <p>Data fat.: {{order.date_billing}}</p>
         </div>
       </li>
       {% endfor %}

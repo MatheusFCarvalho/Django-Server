@@ -68,6 +68,9 @@ body {
   .order-not-ready {
     background-color: #FFA0A0;
   }
+  .RETIRADO {
+    background-color: rgb(165, 98, 233);
+  }
 
   .order-info {
     flex: 1;
