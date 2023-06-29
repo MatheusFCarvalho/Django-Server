@@ -29,7 +29,7 @@ class Order(models.Model):
     
 
     def data_faturamento(self):
-        return self.data.strftime('%d/%m/%Y')
+        return self.date_billing.strftime('%d/%m/%Y')
 
     def __str__(self):
         return str(self.id)
